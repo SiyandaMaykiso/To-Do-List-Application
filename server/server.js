@@ -1,14 +1,10 @@
 const express = require('express');
 const app = express();
+const authRoutes = require('./authRoutes'); // Adjust the path as needed
 
-// Middleware to parse JSON bodies
-app.use(express.json());
+app.use(express.json()); // Middleware for parsing JSON bodies
 
-// Import authRoutes
-const authRoutes = require('./authRoutes'); // Adjust the path as necessary
-
-// Use authRoutes with '/api/auth' as base path
-app.use('/api/auth', authRoutes);
+app.use('/api/auth', authRoutes); // Mount auth routes
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
