@@ -1,10 +1,15 @@
 const express = require('express');
 const app = express();
-const authRoutes = require('./authRoutes'); // Adjust the path as needed
+const authRoutes = require('./authRoutes'); // Ensure this path is correct
+const taskRoutes = require('./taskRoutes'); // Import task routes
 
 app.use(express.json()); // Middleware for parsing JSON bodies
 
-app.use('/api/auth', authRoutes); // Mount auth routes
+// Mount auth routes
+app.use('/api/auth', authRoutes);
+
+// Mount task routes
+app.use('/api/tasks', taskRoutes); // Use '/api/tasks' as the base route for task operations
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
