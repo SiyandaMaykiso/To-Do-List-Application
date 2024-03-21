@@ -1,8 +1,10 @@
 const express = require('express');
 const cors = require('cors'); // Import cors package
 const app = express();
-const authRoutes = require('./authRoutes'); // Ensure this path is correct
-const taskRoutes = require('./taskRoutes'); // Import task routes
+
+// Adjusted import paths based on the project structure
+const authRoutes = require('./routes/authRoutes'); // Adjusted path
+const taskRoutes = require('./routes/taskRoutes'); // Adjusted path
 
 app.use(cors()); // Enable CORS for all requests
 app.use(express.json()); // Middleware for parsing JSON bodies
