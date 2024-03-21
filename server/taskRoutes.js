@@ -1,20 +1,22 @@
 const express = require('express');
-const tasksController = require('./controllers/tasksController'); // Make sure this path matches your structure
+const tasksController = require('./controllers/tasksController'); // Ensure this path is correct
 const router = express.Router();
 
-// POST /tasks - Create a new task
-router.post('/tasks', tasksController.createTask);
+// Adjust the paths to remove '/tasks' since it will be added when the routes are mounted in the main server file
 
-// GET /tasks - Get all tasks
-router.get('/tasks', tasksController.getAllTasks);
+// Create a new task
+router.post('/', tasksController.createTask);
 
-// GET /tasks/:id - Get a single task by ID
-router.get('/tasks/:id', tasksController.getTaskById);
+// Get all tasks
+router.get('/', tasksController.getAllTasks);
 
-// PATCH /tasks/:id - Update a task
-router.patch('/tasks/:id', tasksController.updateTask);
+// Get a single task by ID
+router.get('/:id', tasksController.getTaskById);
 
-// DELETE /tasks/:id - Delete a task
-router.delete('/tasks/:id', tasksController.deleteTask);
+// Update a task
+router.patch('/:id', tasksController.updateTask);
+
+// Delete a task
+router.delete('/:id', tasksController.deleteTask);
 
 module.exports = router;

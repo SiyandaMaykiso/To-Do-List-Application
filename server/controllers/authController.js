@@ -6,6 +6,12 @@ require('dotenv').config(); // Ensure environment variables are loaded
 
 const registerUser = async (req, res) => {
   const { username, password, email } = req.body;
+  
+  // Basic validation for email presence
+  if (!email || !email.includes('@')) {
+    return res.status(400).json({ message: "A valid email is required." });
+  }
+
   const hashedPassword = await bcrypt.hash(password, 10);
 
   try {
@@ -37,7 +43,6 @@ const loginUser = async (req, res) => {
       return res.status(401).json({ error: 'Invalid Credentials' });
     }
 
-    // Use the JWT_SECRET environment variable for the JWT sign method
     const token = jwt.sign({ userId: user.rows[0].id }, process.env.JWT_SECRET, { expiresIn: '1h' });
     // Return the token and any non-sensitive user information
     res.json({ token, user: { id: user.rows[0].id, username: user.rows[0].username, email: user.rows[0].email } });
