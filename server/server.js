@@ -1,12 +1,20 @@
 const express = require('express');
-const cors = require('cors'); // Import cors package
+const cors = require('cors'); // Make sure cors is installed (`npm install cors`)
 const app = express();
+
+// Define CORS options
+const corsOptions = {
+    origin: 'http://localhost:3000', // This should match the domain of your frontend application
+    credentials: true, // Allowing credentials (cookies, authorization headers, etc.)
+};
 
 // Adjusted import paths based on the project structure
 const authRoutes = require('./routes/authRoutes'); // Adjusted path
 const taskRoutes = require('./routes/taskRoutes'); // Adjusted path
 
-app.use(cors()); // Enable CORS for all requests
+// Apply CORS with the specified options
+app.use(cors(corsOptions));
+
 app.use(express.json()); // Middleware for parsing JSON bodies
 
 // Mount auth routes
