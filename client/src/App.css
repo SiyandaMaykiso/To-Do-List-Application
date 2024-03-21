@@ -1,3 +1,5 @@
+/* App.css */
+
 /* Reset some default padding and margin */
 * {
   margin: 0;
@@ -10,6 +12,11 @@
   text-align: center;
   font-family: 'Arial', sans-serif;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  justify-content: center;
 }
 
 /* Header styles */
@@ -17,13 +24,14 @@
   background-color: #007bff;
   padding: 20px 0;
   color: white;
+  width: 100%;
 }
 
 /* Task list styles */
 .TaskList {
   margin: 20px auto;
   max-width: 600px;
-  text-align: left;
+  text-align: center;
 }
 
 .TaskItem {
@@ -37,32 +45,48 @@
   align-items: center;
 }
 
-/* Form styles */
-.AddTaskForm,
-.LoginPage {
-  max-width: 300px;
-  margin: 20px auto;
+/* Container for login and registration sections */
+.home-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Space between forms */
+  flex-wrap: wrap; /* Wrap forms for responsiveness */
+}
+
+/* Unified form styles for login and registration */
+.form-section, .login-section, .registration-section {
+  max-width: 350px;
+  margin: 5px; /* Adjust margins for tight spacing and centering */
+  padding: 15px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
 input[type="text"],
 input[type="password"],
+input[type="email"],
 textarea {
-  padding: 10px;
-  margin: 10px 0;
+  padding: 8px;
+  margin: 4px 0;
   border-radius: 5px;
   border: 1px solid #ddd;
-  width: calc(100% - 22px); /* Adjust width based on padding and border */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 button {
   background-color: #007bff;
   color: white;
-  padding: 10px 15px;
+  padding: 8px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  width: 100%;
 }
 
 button:hover {
@@ -72,8 +96,6 @@ button:hover {
 /* Link styles */
 .App-link {
   color: #61dafb;
-  margin-top: 20px;
+  margin-top: 15px;
   display: inline-block;
 }
-
-/* Animation removed for simplicity */

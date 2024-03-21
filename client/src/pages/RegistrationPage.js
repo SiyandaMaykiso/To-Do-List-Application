@@ -1,30 +1,37 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const LoginPage = () => {
+const RegistrationPage = () => {
   const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // Hook to programmatically navigate
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    if(password !== confirmPassword) {
+      alert("Passwords don't match");
+      return;
+    }
+
     try {
-      const response = await fetch('http://localhost:3001/api/auth/login', {
+      const response = await fetch('http://localhost:3001/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ username, email, password }),
       });
 
       if (!response.ok) {
-        throw new Error('Login failed');
+        throw new Error('Registration failed');
       }
 
-      const { token } = await response.json();
-      localStorage.setItem('token', token); // Store the token
-      navigate('/'); // Redirect to the home page or wherever you like
+      alert('Registration successful. Please log in.');
+      navigate('/login');
     } catch (error) {
       console.error(error);
-      alert('Login failed. Please check your username and password.');
+      alert('Registration failed. Please try again.');
     }
   };
 
@@ -34,12 +41,12 @@ const LoginPage = () => {
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    height: '100vh' // Take up full viewport height
+    height: '100vh'
   };
 
   return (
     <div style={centerStyle}>
-      <h2>Login</h2>
+      <h2>Register</h2>
       <form onSubmit={handleSubmit} style={{ width: '300px' }}>
         <div>
           <label htmlFor="username">Username:</label>
@@ -48,6 +55,16 @@ const LoginPage = () => {
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="email">Email:</label>
+          <input
+            id="email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
@@ -61,10 +78,20 @@ const LoginPage = () => {
             required
           />
         </div>
-        <button type="submit">Login</button>
+        <div>
+          <label htmlFor="confirmPassword">Confirm Password:</label>
+          <input
+            id="confirmPassword"
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit">Register</button>
       </form>
     </div>
   );
 };
 
-export default LoginPage;
+export default RegistrationPage;
