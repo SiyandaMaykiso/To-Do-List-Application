@@ -1,5 +1,5 @@
-// src/components/TaskList.js
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'; // Import Link
 
 const TaskList = () => {
   const [tasks, setTasks] = useState([]);
@@ -16,11 +16,17 @@ const TaskList = () => {
   }, []);
 
   if (tasks.length === 0) {
-    return <div>No tasks found.</div>;
+    return (
+      <div>
+        No tasks found.
+        <Link to="/dashboard">Back to Dashboard</Link> {/* Add this line */}
+      </div>
+    );
   }
 
   return (
     <div>
+      <Link to="/dashboard">Back to Dashboard</Link> {/* Add this line */}
       {tasks.map(task => (
         <div key={task.id}>
           <h3>{task.title}</h3>

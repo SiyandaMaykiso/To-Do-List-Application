@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { toast } from 'react-toastify'; // Import toast
+import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom'; // Import Link
 
 const AddTaskForm = () => {
   const [title, setTitle] = useState('');
@@ -28,33 +29,38 @@ const AddTaskForm = () => {
       setTitle(''); // Clear the form fields
       setDescription('');
 
-      toast.success('Task added successfully!'); // Success notification
+      toast.success('Task added successfully!');
     } catch (error) {
       console.error('Error creating task:', error);
-      toast.error('Error adding task.'); // Error notification
+      toast.error('Error adding task.');
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="title">Title:</label>
-      <input
-        id="title"
-        type="text"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        required
-      />
-      
-      <label htmlFor="description">Description:</label>
-      <textarea
-        id="description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
-      
-      <button type="submit">Add Task</button>
-    </form>
+    <>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="title">Title:</label>
+        <input
+          id="title"
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
+        
+        <label htmlFor="description">Description:</label>
+        <textarea
+          id="description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+        
+        <button type="submit">Add Task</button>
+      </form>
+      <div style={{ marginTop: '20px' }}>
+        <Link to="/dashboard">Back to Dashboard</Link> {/* Navigation link back to Dashboard */}
+      </div>
+    </>
   );
 };
 
