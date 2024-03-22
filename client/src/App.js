@@ -3,16 +3,19 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import TaskList from './components/TaskList';
 import AddTaskForm from './components/AddTaskForm';
-import Home from './pages/Home'; // Import Home instead of LoginPage and RegistrationPage
+import Home from './pages/Home'; // Assuming Home includes your login and registration forms
+import Dashboard from './components/Dashboard'; // Import the Dashboard component here
 import './App.css';
 
 function App() {
   return (
     <Router>
       <Routes>
-        {/* Use Home component for the root route */}
+        {/* Home component for the root route */}
         <Route path="/" element={<Home />} />
-        {/* Other routes */}
+        {/* Add a route for the Dashboard */}
+        <Route path="/dashboard" element={<Dashboard />} />
+        {/* Keep the existing routes for tasks and adding tasks */}
         <Route path="/tasks" element={<TaskList />} />
         <Route path="/add-task" element={<AddTaskForm />} />
       </Routes>
