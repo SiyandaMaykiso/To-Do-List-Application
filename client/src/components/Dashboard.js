@@ -1,4 +1,3 @@
-// src/components/Dashboard.js
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
@@ -10,7 +9,6 @@ const Dashboard = () => {
     fetchTasks();
   }, []);
 
-  // Function to fetch tasks
   const fetchTasks = async () => {
     try {
       const response = await fetch('http://localhost:3001/api/tasks', {
@@ -25,7 +23,6 @@ const Dashboard = () => {
     }
   };
 
-  // Function to update task status
   const toggleTaskCompletion = async (taskId, isComplete) => {
     try {
       const response = await fetch(`http://localhost:3001/api/tasks/${taskId}`, {
@@ -34,11 +31,10 @@ const Dashboard = () => {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
-        body: JSON.stringify({ iscomplete: isComplete }), // Adjusted to match the backend expectation
+        body: JSON.stringify({ iscomplete: isComplete }),
       });
       if (!response.ok) throw new Error('Failed to update task status.');
-
-      fetchTasks(); // Refetch tasks to reflect the update
+      fetchTasks();
       toast.success('Task status updated successfully!');
     } catch (error) {
       console.error('Error updating task status:', error);
@@ -46,9 +42,27 @@ const Dashboard = () => {
     }
   };
 
+  const deleteTask = async (taskId) => {
+    try {
+      const response = await fetch(`http://localhost:3001/api/tasks/${taskId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+      if (!response.ok) throw new Error('Failed to delete the task.');
+      setTasks(tasks.filter(task => task.id !== taskId));
+      toast.success('Task deleted successfully!');
+    } catch (error) {
+      console.error('Error deleting task:', error);
+      toast.error('Failed to delete task.');
+    }
+  };
+
   const visibleTasks = tasks.filter(task => {
-    if (filter === 'completed') return task.iscomplete; // Make sure this matches the data structure returned by your backend
-    if (filter === 'pending') return !task.iscomplete; // Adjusted to use iscomplete in lowercase
+    if (filter === 'completed') return task.iscomplete;
+    if (filter === 'pending') return !task.iscomplete;
     return true;
   });
 
@@ -66,6 +80,9 @@ const Dashboard = () => {
             {task.title} - {task.iscomplete ? 'Completed' : 'Pending'}
             <button onClick={() => toggleTaskCompletion(task.id, !task.iscomplete)}>
               Mark as {task.iscomplete ? 'Pending' : 'Completed'}
+            </button>
+            <button onClick={() => deleteTask(task.id)} style={{ marginLeft: '10px' }}>
+              Delete
             </button>
           </li>
         ))}

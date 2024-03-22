@@ -4,7 +4,7 @@ exports.createTask = async (req, res) => {
     const { title, description, userId } = req.body;
     try {
         const newTask = await pool.query(
-            'INSERT INTO tasks (title, description, userid) VALUES ($1, $2, $3) RETURNING *',
+            'INSERT INTO tasks (title, description, userId) VALUES ($1, $2, $3) RETURNING *',
             [title, description, userId]
         );
         res.json(newTask.rows[0]);
@@ -40,18 +40,19 @@ exports.getTaskById = async (req, res) => {
 
 exports.updateTask = async (req, res) => {
     const { id } = req.params;
-    const { title, description, iscomplete } = req.body; // Note the lowercase 'iscomplete'
+    const { iscomplete } = req.body; // Using only iscomplete as that's what's being updated
+
     try {
         const updatedTask = await pool.query(
-            'UPDATE tasks SET title = $1, description = $2, iscomplete = $3 WHERE id = $4 RETURNING *',
-            [title, description, iscomplete, id]
+            'UPDATE tasks SET iscomplete = $1 WHERE id = $2 RETURNING *',
+            [iscomplete, id]
         );
         if (updatedTask.rows.length === 0) {
             return res.status(404).send('Task not found');
         }
         res.json(updatedTask.rows[0]);
     } catch (error) {
-        console.error(error.message);
+        console.error('Error updating task:', error);
         res.status(500).send('Server error');
     }
 };
@@ -63,9 +64,9 @@ exports.deleteTask = async (req, res) => {
         if (deleteOp.rowCount === 0) {
             return res.status(404).send('Task not found');
         }
-        res.status(204).send();
+        res.status(204).send('Task deleted successfully');
     } catch (error) {
-        console.error(error.message);
+        console.error('Error deleting task:', error);
         res.status(500).send('Server error');
     }
 };
