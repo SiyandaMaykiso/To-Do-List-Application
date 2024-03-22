@@ -6,12 +6,11 @@ const Dashboard = () => {
   const [filter, setFilter] = useState('all'); // 'all', 'completed', 'pending'
 
   useEffect(() => {
-    // Placeholder for fetching tasks from your backend
     const fetchTasks = async () => {
       try {
-        const response = await fetch('http://your-backend-api/tasks');
+        const response = await fetch('http://localhost:3001/api/tasks');
         const data = await response.json();
-        setTasks(data.tasks);
+        setTasks(data); // Directly use the array returned from the backend
       } catch (error) {
         console.error('Error fetching tasks:', error);
       }
@@ -23,7 +22,7 @@ const Dashboard = () => {
   const visibleTasks = tasks.filter(task => {
     if (filter === 'completed') return task.isComplete;
     if (filter === 'pending') return !task.isComplete;
-    return true;
+    return true; // For 'all' filter or default case
   });
 
   return (
