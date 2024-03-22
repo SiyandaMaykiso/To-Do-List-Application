@@ -1,46 +1,37 @@
-// src/components/AddTaskForm.js
 import React, { useState } from 'react';
+import { toast } from 'react-toastify'; // Import toast
 
 const AddTaskForm = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
-  // Function to handle form submission
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent default form submission behavior
+    e.preventDefault();
 
-    // Task data to be sent
-    const taskData = {
-      title,
-      description,
-    };
+    const taskData = { title, description };
 
     try {
-      // Send a POST request to the backend
       const response = await fetch('http://localhost:3001/api/tasks', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          // Assuming the JWT token is stored in localStorage; adjust as necessary for your auth setup
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
         body: JSON.stringify(taskData),
       });
 
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
+      if (!response.ok) throw new Error('Failed to create task.');
 
       const data = await response.json();
       console.log('Task created successfully:', data);
-      
-      // Optionally: Clear the form fields
-      setTitle('');
+
+      setTitle(''); // Clear the form fields
       setDescription('');
 
-      // Optionally: Refresh the list of tasks or provide feedback to the user
+      toast.success('Task added successfully!'); // Success notification
     } catch (error) {
       console.error('Error creating task:', error);
+      toast.error('Error adding task.'); // Error notification
     }
   };
 

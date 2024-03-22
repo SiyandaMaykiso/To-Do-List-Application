@@ -4,7 +4,7 @@ exports.createTask = async (req, res) => {
     const { title, description, userId } = req.body;
     try {
         const newTask = await pool.query(
-            'INSERT INTO tasks (title, description, userId) VALUES ($1, $2, $3) RETURNING *',
+            'INSERT INTO tasks (title, description, userid) VALUES ($1, $2, $3) RETURNING *',
             [title, description, userId]
         );
         res.json(newTask.rows[0]);
@@ -40,11 +40,11 @@ exports.getTaskById = async (req, res) => {
 
 exports.updateTask = async (req, res) => {
     const { id } = req.params;
-    const { title, description, isComplete } = req.body;
+    const { title, description, iscomplete } = req.body; // Note the lowercase 'iscomplete'
     try {
         const updatedTask = await pool.query(
-            'UPDATE tasks SET title = $1, description = $2, isComplete = $3 WHERE id = $4 RETURNING *',
-            [title, description, isComplete, id]
+            'UPDATE tasks SET title = $1, description = $2, iscomplete = $3 WHERE id = $4 RETURNING *',
+            [title, description, iscomplete, id]
         );
         if (updatedTask.rows.length === 0) {
             return res.status(404).send('Task not found');
