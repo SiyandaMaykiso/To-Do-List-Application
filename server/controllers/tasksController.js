@@ -1,4 +1,4 @@
-const pool = require('../db'); // Adjust path as necessary
+const pool = require('../db');
 
 exports.createTask = async (req, res) => {
     const { title, description, userId } = req.body;
@@ -40,7 +40,7 @@ exports.getTaskById = async (req, res) => {
 
 exports.updateTask = async (req, res) => {
     const { id } = req.params;
-    const { iscomplete } = req.body; // Using only iscomplete as that's what's being updated
+    const { iscomplete } = req.body;
 
     try {
         const updatedTask = await pool.query(
