@@ -11,5 +11,5 @@ This project is designed to demonstrate proficiency in several key areas of web 
 - **User Authentication**: Incorporating user authentication to allow users to have private, secure access to their individual task lists.
 - **CRUD Operations**: Applying Create, Read, Update, and Delete (CRUD) operations to interact with the PostgreSQL database, allowing users full control over their tasks.
 
-
-
+## Live Application
+The To-Do List Application is deployed and available for use at [this link](https://to-do-list-application-sm-79db330bd202.herokuapp.com). Feel free to create an account and start managing your tasks.
