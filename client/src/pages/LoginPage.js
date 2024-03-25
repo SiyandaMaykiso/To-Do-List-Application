@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios'; // Ensure axios is installed and imported
+import axios from 'axios';
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
@@ -10,19 +10,18 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrorMessage(''); // Reset error message on new submission
+    setErrorMessage('');
     try {
       const response = await axios.post('http://localhost:3001/api/auth/login', {
         username,
         password,
       }, {
-        withCredentials: true // Only if your backend setup requires, for handling cookies if using sessions
+        withCredentials: true
       });
 
-      // Assuming your backend response includes a token and possibly user details
       if (response.data.token) {
-        localStorage.setItem('token', response.data.token); // Store the token for future requests
-        navigate('/dashboard'); // Adjust as needed based on your routing
+        localStorage.setItem('token', response.data.token);
+        navigate('/dashboard');
         console.log('Login successful:', response.data.message);
       } else {
         setErrorMessage('Login failed: No token returned.');
