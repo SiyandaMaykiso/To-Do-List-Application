@@ -1,16 +1,23 @@
 {
-  "name": "to-do-list-application",
+  "name": "server",
   "version": "1.0.0",
-  "description": "## Description This To-Do List application is a user-friendly platform that allows users to manage their daily tasks efficiently. Users can easily add tasks to their personal list, mark tasks as completed, and delete them as needed. Each user can create an account to maintain their own individual list, making task management both personal and secure.",
+  "description": "",
   "main": "server/server.js",
   "scripts": {
-    "start": "node server/server.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false && npm install --prefix client && npm run build --prefix client"
-  },
-  "engines": {
-    "node": "20.x"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.0",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.11.3"
+  },
+  "engines": {
+    "node": "20.x"
+  }
 }
