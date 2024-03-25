@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { Link } from 'react-router-dom'; // Import the Link component
+import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
   const [tasks, setTasks] = useState([]);
@@ -74,7 +74,7 @@ const Dashboard = () => {
         <button onClick={() => setFilter('all')}>All</button>
         <button onClick={() => setFilter('completed')}>Completed</button>
         <button onClick={() => setFilter('pending')}>Pending</button>
-        {/* Navigation buttons */}
+      
         <Link to="/tasks"><button>View Task List</button></Link>
         <Link to="/add-task"><button>Add New Task</button></Link>
       </div>
