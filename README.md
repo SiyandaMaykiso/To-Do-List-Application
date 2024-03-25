@@ -12,7 +12,10 @@ This project is designed to demonstrate proficiency in several key areas of web 
 - **CRUD Operations**: Applying Create, Read, Update, and Delete (CRUD) operations to interact with the PostgreSQL database, allowing users full control over their tasks.
 
 ## Deployed App
-The To-Do List Application is deployed and available for use at [this link](https://to-do-list-application-sm-79db330bd202.herokuapp.com). Feel free to create an account and start managing your tasks.
+
+The To-Do List Application is deployed and available for use at https://to-do-list-application-sm-79db330bd202.herokuapp.com
+
+Feel free to create an account and start managing your tasks.
 
 ## Application Screenshot
 ![To-Do List Application Screenshot](https://github.com/SiyandaMaykiso/To-Do-List-Application/blob/main/client/public/desktop-screenshot.jpg)
