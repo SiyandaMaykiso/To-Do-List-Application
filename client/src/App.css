@@ -1,13 +1,10 @@
-/* App.css */
 
-/* Reset some default padding and margin */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Basic styling for the app container */
 .App {
   text-align: center;
   font-family: 'Arial', sans-serif;
@@ -19,15 +16,15 @@
   justify-content: center;
 }
 
-/* Header styles */
+
 .App-header {
   background-color: #007bff;
   padding: 20px 0;
   color: white;
-  width: 100%;
+  width: 25%;
 }
 
-/* Task list styles */
+
 .TaskList {
   margin: 20px auto;
   max-width: 600px;
@@ -45,18 +42,18 @@
   align-items: center;
 }
 
-/* Container for login and registration sections */
+
 .home-container {
   display: flex;
   justify-content: center;
-  gap: 20px; /* Space between forms */
-  flex-wrap: wrap; /* Wrap forms for responsiveness */
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
-/* Unified form styles for login and registration */
+
 .form-section, .login-section, .registration-section {
   max-width: 350px;
-  margin: 5px; /* Adjust margins for tight spacing and centering */
+  margin: 5px;
   padding: 15px;
   background-color: #f0f0f0;
   border-radius: 8px;
@@ -93,7 +90,6 @@ button:hover {
   background-color: #0056b3;
 }
 
-/* Link styles */
 .App-link {
   color: #61dafb;
   margin-top: 15px;
