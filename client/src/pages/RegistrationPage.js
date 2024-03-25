@@ -35,7 +35,6 @@ const RegistrationPage = () => {
     }
   };
 
-  // Inline styles for centering
   const centerStyle = {
     display: 'flex',
     flexDirection: 'column',

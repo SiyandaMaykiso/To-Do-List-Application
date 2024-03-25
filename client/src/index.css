@@ -1,4 +1,4 @@
-/* Resetting margin and padding for all elements for consistency */
+
 * {
   margin: 0;
   padding: 0;
@@ -12,51 +12,51 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f0f2f5; /* Light grey background */
-  color: #333; /* Dark grey text for better readability */
-  line-height: 1.6; /* Improve line spacing */
-  padding: 20px; /* Add some padding around the app */
+  background-color: #f0f2f5; 
+  color: #333; 
+  line-height: 1.6;
+  padding: 20px;
 }
 
-/* Styling for code elements, preserving the original font-family */
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-  background-color: #eee; /* Light background for code blocks */
-  padding: 2px 4px; /* Padding around code */
-  border-radius: 4px; /* Rounded corners for code blocks */
-  font-size: 0.9em; /* Slightly smaller font size for code */
+  background-color: #eee; 
+  padding: 2px 4px; 
+  border-radius: 4px;
+  font-size: 0.9em;
 }
 
-/* Additional global styles can go here */
-/* Example: Styling links to have a primary color */
+
+
 a {
-  color: #007bff; /* Bootstrap's primary blue */
-  text-decoration: none; /* Remove underlines from links */
+  color: #007bff; 
+  text-decoration: none;
 }
 
 a:hover {
-  text-decoration: underline; /* Underline links on hover for clarity */
+  text-decoration: underline;
 }
 
-/* Button styling for a more modern look */
+
 button {
-  background-color: #007bff; /* Primary button color */
-  color: white; /* Text color for buttons */
+  background-color: #007bff;
+  color: white; 
   border: none;
   padding: 8px 12px;
-  border-radius: 4px; /* Rounded corners for buttons */
+  border-radius: 4px;
   cursor: pointer;
   font-size: 1em;
 }
 
 button:hover {
-  background-color: #0056b3; /* Darker shade on hover */
+  background-color: #0056b3;
 }
 
-/* Container class for general use */
+
 .container {
-  max-width: 1200px; /* Maximum width of the content */
-  margin: 0 auto; /* Center align the content */
-  padding: 20px; /* Padding inside the container */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
