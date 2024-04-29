@@ -12,7 +12,8 @@ const LoginPage = () => {
     e.preventDefault();
     setErrorMessage('');
     try {
-      const response = await axios.post('http://localhost:3001/api/auth/login', {
+      // Updated URL to point directly to the production server
+      const response = await axios.post('https://to-do-list-application-sm-79db330bd202.herokuapp.com/api/auth/login', {
         username,
         password,
       }, {

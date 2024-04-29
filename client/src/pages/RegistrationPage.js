@@ -17,7 +17,8 @@ const RegistrationPage = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:3001/api/auth/register', {
+      // Directly using the production URL in the fetch call
+      const response = await fetch('https://to-do-list-application-sm-79db330bd202.herokuapp.com/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, email, password }),
