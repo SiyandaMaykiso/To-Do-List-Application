@@ -12,7 +12,8 @@ const AddTaskForm = () => {
     const taskData = { title, description };
 
     try {
-      const response = await fetch('http://localhost:3001/api/tasks', {
+      // Replace 'localhost' URL with the production URL
+      const response = await fetch('https://to-do-list-application-sm-79db330bd202.herokuapp.com/api/tasks', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -26,7 +27,7 @@ const AddTaskForm = () => {
       const data = await response.json();
       console.log('Task created successfully:', data);
 
-      setTitle(''); // Clear the form fields
+      setTitle(''); // Clear the form fields after submission
       setDescription('');
 
       toast.success('Task added successfully!');

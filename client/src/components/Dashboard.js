@@ -12,7 +12,7 @@ const Dashboard = () => {
 
   const fetchTasks = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/tasks', {
+      const response = await fetch('https://to-do-list-application-sm-79db330bd202.herokuapp.com/api/tasks', {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       if (!response.ok) throw new Error('Failed to fetch tasks.');
@@ -26,7 +26,7 @@ const Dashboard = () => {
 
   const toggleTaskCompletion = async (taskId, isComplete) => {
     try {
-      const response = await fetch(`http://localhost:3001/api/tasks/${taskId}`, {
+      const response = await fetch(`https://to-do-list-application-sm-79db330bd202.herokuapp.com/api/tasks/${taskId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ const Dashboard = () => {
 
   const deleteTask = async (taskId) => {
     try {
-      const response = await fetch(`http://localhost:3001/api/tasks/${taskId}`, {
+      const response = await fetch(`https://to-do-list-application-sm-79db330bd202.herokuapp.com/api/tasks/${taskId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

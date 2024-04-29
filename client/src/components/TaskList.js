@@ -5,12 +5,18 @@ const TaskList = () => {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3001/api/tasks', {
+    // Replace 'localhost' URL with the production URL
+    fetch('https://to-do-list-application-sm-79db330bd202.herokuapp.com/api/tasks', {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
     })
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to fetch tasks');
+      }
+      return response.json();
+    })
     .then(data => setTasks(data))
     .catch(error => console.error('Error fetching tasks:', error));
   }, []);
