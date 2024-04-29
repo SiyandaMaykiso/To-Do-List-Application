@@ -1,12 +1,14 @@
 {
   "name": "to-do-list-application",
   "version": "1.0.0",
-  "description": "## Description This To-Do List application is a user-friendly platform that allows users to manage their daily tasks efficiently. Users can easily add tasks to their personal list, mark tasks as completed, and delete them as needed. Each user can create an account to maintain their own individual list, making task management both personal and secure.",
+  "description": "This To-Do List application is a user-friendly platform that allows users to manage their daily tasks efficiently.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "postinstall": "npm install --prefix client && npm run build --prefix client"
+    "build": "npm run build --prefix client",
+    "postinstall": "npm install --prefix client && npm run build --prefix client",
+    "heroku-postbuild": "npm run build --prefix client"
   },
   "author": "Siyanda Mayekiso",
   "license": "ISC",
@@ -17,7 +19,9 @@
     "express": "^4.18.3",
     "express-session": "^1.18.0",
     "jsonwebtoken": "^9.0.2",
-    "pg": "^8.11.3",
+    "pg": "^8.11.3"
+  },
+  "devDependencies": {
     "react-scripts": "^5.0.1"
   }
 }
