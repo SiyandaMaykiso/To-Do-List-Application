@@ -22,9 +22,7 @@ Feel free to create an account and start managing your tasks.
 ## Application Screenshot
 
 * **Home Page:**
+ ![Home Page](https://github.com/SiyandaMaykiso/To-Do-List-Application/blob/main/Screenshots/To-Do%20List%20Home%20Page%20Screenshot.png)
 
 * **Dashboard:**
-
-
-
-
+ ![Dashboard](https://github.com/SiyandaMaykiso/To-Do-List-Application/blob/main/Screenshots/To-Do%20List%20Dashboard%20Screenshot.png)
