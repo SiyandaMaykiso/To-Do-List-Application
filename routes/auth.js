@@ -20,7 +20,7 @@ router.post('/login', async (req, res) => {
     }
 
     const payload = { userId: user.id };
-    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '24h' }); // Changed to 24 hours
+    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '24h' }); 
     res.json({ token });
   } catch (error) {
     console.error(error);

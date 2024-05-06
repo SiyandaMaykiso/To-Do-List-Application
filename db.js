@@ -7,10 +7,10 @@ let poolConfig = {
 
 if (process.env.NODE_ENV === 'production') {
   poolConfig.ssl = {
-    rejectUnauthorized: false // Necessary for Heroku's self-signed certificates
+    rejectUnauthorized: false 
   };
 } else {
-  // Additional configuration for local development if needed
+  
   poolConfig = {
     user: process.env.DB_USER,
     host: process.env.DB_HOST,
